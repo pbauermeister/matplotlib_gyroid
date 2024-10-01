@@ -1,2 +1,4 @@
-__pycache__
+*.stl
 *~
+.venv
+__pycache__
