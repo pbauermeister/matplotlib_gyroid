@@ -26,7 +26,7 @@ def thicken(source: Path, params: PlotParams, dest: Path) -> mrmeshpy.Mesh:
     # load non-closed mesh
     sheet_mesh = mrmeshpy.loadMesh(source)
 
-    k = params.scale_factor
+    k = params.size / params.subdivisions * 10.0
     m = mrmeshpy.Matrix3f.scale(k, k, k)
     a = mrmeshpy.AffineXf3f.linear(m)
     sheet_mesh.transform(a)

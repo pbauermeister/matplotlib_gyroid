@@ -17,6 +17,6 @@ class PlotParams:
     formula: Formula
 
     # conversion to solid space
-    scale_factor: float = 1.0
+    size: float = 40.0
     thickness: float = 0.3
     granularity: float = 0.1
