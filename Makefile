@@ -28,7 +28,7 @@ venv: ## setup a local .venv and tell how to activate it
 
 require: ## install required libraries
 	pip install $(OPTIONS) \
-	numpy matplotlib matplotlib-stubs data-science-types scikit-image stl numpy-stl
+	numpy matplotlib matplotlib-stubs data-science-types scikit-image stl numpy-stl meshlib
 
 require-user: ## install required librarie user-wide (Debian 12)
 	make require OPTIONS=--break-system-packages
