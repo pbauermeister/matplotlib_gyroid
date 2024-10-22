@@ -33,21 +33,30 @@ def parse_args(name: str) -> Namespace:
         action='store_true',
         help='generate STL file',
     )
-    return parser.parse_args()
+
+    args = parser.parse_args()
+    if not (args.generate_stl or args.view_plot):
+        parser.error('No action requested.')
+    return args
 
 
 def run(params: PlotParams) -> None:
     args = parse_args(params.name)
 
-    print('Computing surface...')
+    print(f'{params.name}: Computing surface...')
     vertices, faces = solver.compute_surface(params.span, params.subdivisions, params.formula)
 
     if args.generate_stl:
         stl.save_volume_stl(vertices, faces, params, Path(f'{params.name}.stl'))
 
     if args.view_plot:
-        print('Viewing surface...')
+        print(f'{params.name}: Viewing surface...')
         make_plot(vertices, faces)
         pyplot.show()
 
-    print('Done.')
+    print(f'{params.name}: Done.')
+
+
+def name_of_file(f: str) -> str:
+    s = Path(f).name
+    return s.split('.')[0]

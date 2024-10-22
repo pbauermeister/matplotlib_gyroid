@@ -26,6 +26,8 @@ def thicken(source: Path, params: PlotParams, dest: Path) -> mrmeshpy.Mesh:
     # load non-closed mesh
     sheet_mesh = mrmeshpy.loadMesh(source)
 
+    print(f'{params.name}: Resizing...')
+
     k = params.size / params.subdivisions * 10.0
     m = mrmeshpy.Matrix3f.scale(k, k, k)
     a = mrmeshpy.AffineXf3f.linear(m)
@@ -35,6 +37,8 @@ def thicken(source: Path, params: PlotParams, dest: Path) -> mrmeshpy.Mesh:
     if params.thickness == 0:
         return sheet_mesh
 
+    print(f'{params.name}: Thickening surface...')
+
     # setup offset parameters
     offset_params = mrmeshpy.OffsetParameters()
     offset_params.voxelSize = params.granularity
@@ -43,14 +47,12 @@ def thicken(source: Path, params: PlotParams, dest: Path) -> mrmeshpy.Mesh:
 
 def save_volume_stl(vertices: NDARRAY, faces: NDARRAY, params: PlotParams, dest: Path) -> None:
     with NamedTemporaryFile(suffix=".stl") as f:
-        print("Making STL of surface...")
+        print(f'{params.name}: Making STL of surface...')
         source = Path(Path(f.name))
         save_surface_stl(vertices, faces, source)
         f.seek(0)
 
-        if params.thickness > 0:
-            print("Thickening surface...")
         mesh = thicken(source, params, dest)
 
-        print(f"Saving STL as '{dest}'...")
+        print(f'{params.name}: Saving STL as \'{dest}\'...')
         mrmeshpy.saveMesh(mesh, dest)

@@ -2,24 +2,26 @@
 
 from numpy import pi, sin, sinh
 
-from lib import run
+from lib import run, name_of_file
 from lib.types import *
 
 
-def scherk_singly(x: NDARRAY, y: NDARRAY, z: NDARRAY) -> NDARRAY:
+def f(x: NDARRAY, y: NDARRAY, z: NDARRAY) -> NDARRAY:
     # sin(z) = sinh(x) * sinh(y)
-    z = z / (5 / 3)
-    return sinh(x / 2.0) * sinh(y / 2.0) - sin(z)
+    zz = z / (5 / 3)
+    xx = x * 2.0 + y / 2.0
+    yy = y
+    return sinh(xx / 2.0) * sinh(yy / 2.0) - sin(zz)
 
 
 params = PlotParams(
-    name="scherk-singly",
+    name=name_of_file(__file__),
     subdivisions=150,
     span=pi * 4.0,
-    formula=scherk_singly,
-    size=10,
-    thickness=0.8,
-    granularity=0.1,
+    formula=f,
+    size=150.0,
+    thickness=0.4 * 3.0,
+    granularity=0.3,
 )
 
 run(params)
