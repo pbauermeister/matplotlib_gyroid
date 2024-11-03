@@ -9,7 +9,7 @@ from lib.types import *
 def f(x: NDARRAY, y: NDARRAY, z: NDARRAY) -> NDARRAY:
     # sin(z) = sinh(x) * sinh(y)
     zz = z / (5 / 3)
-    xx = x * 2.0 + y / 2.0
+    xx = x  # * 2.0 + y / 2.0
     yy = y
     return sinh(xx / 2.0) * sinh(yy / 2.0) - sin(zz)
 

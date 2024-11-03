@@ -15,9 +15,9 @@ params = PlotParams(
     subdivisions=150,
     span=pi * 2.0,
     formula=f,
-    size=50,
-    thickness=0.5,
-    granularity=0.3,
+    size=40,
+    thickness=0.4,
+    granularity=0.4,
 )
 
 run(params)
