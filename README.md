@@ -100,10 +100,11 @@ You can use Cura or any other slicer.
 # Other Included Surfaces
 
 The surfaces provided in this repo are:
-| Program | Description | |
-| ---------------- | -------------------------------| - |
-| `./gyroid.py` | The surface described above | ![](./docs/images/fig-gyroid.png) |
-| `./lamella.py` | A surface accidentally created | ![](./docs/images/fig-lamella.png) |
-| `./multiple.py` | A collection of surfaces | ![](./docs/images/fig-schwarz_p.png) |
-| `./organite.py` | An organic section | ![](./docs/images/fig-organite.png) |
-| `./scherk-singly.py` | A Scherk surface | ![](./docs/images/fig-scherk-singly.png)
+| Program | Description | Screenshot | STL |
+| ---------------- | -------------------------------| - | - |
+| `./gyroid.py` | The surface described above | ![](./docs/images/fig-gyroid.png) | [gyroid.stl](./outputs/stl/gyroid.stl) |
+| `./lamella.py` | A surface accidentally created | ![](./docs/images/fig-lamella.png) | [lamella.stl](./outputs/stl/lamella.stl) |
+| `./multiple.py` | A collection of surfaces | ![](./docs/images/fig-schwarz_p.png) | [schwarz_p.stl](./outputs/stl/schwarz_p.stl) |
+| `./organite.py` | An organic section | ![](./docs/images/fig-organite.png) | [organite.stl](./outputs/stl/organite.stl) |
+| `./scherk-singly.py` | A Scherk surface | ![](./docs/images/fig-scherk-singly.png) | [scherk-singly.stl](./outputs/stl/scherk-singly.stl) |
+| All pre-generated STL files | | | [outputs/stl/](./outputs/stl/) |
