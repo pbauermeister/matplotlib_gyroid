@@ -11,6 +11,9 @@ from matplotlib import pyplot
 from . import solver, stl
 from .types import *
 
+# Output configuration
+STL_OUTPUT_DIR = Path('outputs/stl')
+
 
 def make_plot(vertices: NDARRAY, faces: NDARRAY) -> None:
     fig = pyplot.figure()
@@ -47,7 +50,9 @@ def run(params: PlotParams) -> None:
     vertices, faces = solver.compute_surface(params.span, params.subdivisions, params.formula)
 
     if args.generate_stl:
-        stl.save_volume_stl(vertices, faces, params, Path(f'{params.name}.stl'))
+        stl_path = STL_OUTPUT_DIR / f'{params.name}.stl'
+        stl_path.parent.mkdir(parents=True, exist_ok=True)
+        stl.save_volume_stl(vertices, faces, params, stl_path)
 
     if args.view_plot:
         print(f'{params.name}: Viewing surface...')

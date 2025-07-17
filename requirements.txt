@@ -1,0 +1,22 @@
+# Core dependencies
+numpy>=1.24.0
+matplotlib>=3.6.0
+scikit-image>=0.20.0
+numpy-stl>=3.0.0
+
+# Type checking and stubs
+matplotlib-stubs>=0.2.0
+data-science-types>=0.2.0
+
+# Mesh processing (requires license for commercial use)
+meshlib>=2.4.0
+
+# Development dependencies
+pytest>=7.0.0
+pytest-cov>=4.0.0
+black>=22.0.0
+mypy>=1.0.0
+
+# Optional dependencies
+#jupyterlab>=4.0.0  # For notebook examples
+#meshlab  # For STL visualization (system package)

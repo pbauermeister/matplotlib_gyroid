@@ -1,0 +1,15 @@
+# Development dependencies only
+pytest>=7.0.0
+pytest-cov>=4.0.0
+black>=22.0.0
+mypy>=1.0.0
+flake8>=5.0.0
+pre-commit>=2.20.0
+
+# Documentation
+sphinx>=5.0.0
+sphinx-rtd-theme>=1.0.0
+
+# Performance profiling
+memory-profiler>=0.60.0
+line-profiler>=4.0.0

@@ -1,5 +1,11 @@
-*.stl
+# Python
 *~
+.coverage
 .venv
 .vscode/launch.json
 __pycache__
+.pytest_cache/
+.mypy_cache/
+
+# Generated test coverage reports
+htmlcov/

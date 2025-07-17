@@ -26,32 +26,63 @@ venv: ## setup a local .venv and tell how to activate it
 	@echo "Now please run:"
 	@echo ". .venv/bin/activate"
 
-require: ## install required libraries
-	pip install $(OPTIONS) \
-	numpy matplotlib matplotlib-stubs data-science-types scikit-image stl numpy-stl meshlib
+################################################################################
+## Installation:: ##
 
-require-user: ## install required librarie user-wide (Debian 12)
-	make require OPTIONS=--break-system-packages
+require: ## install production dependencies
+	pip install -r requirements.txt
 
-require-venv: ## install required librarie (in .venv)
-	python3 -m venv .venv && . .venv/bin/activate && \
-	make require
+require-dev: ## install development dependencies
+	pip install -r requirements.txt -r requirements-dev.txt
 
 ################################################################################
-# Quality:: ##
+## Quality:: ##
 
 black: ## run black (changes shall be committed)
 	black --skip-string-normalization --line-length 100 .
 
 lint: ## lint source files
-	./lint.sh
+	./scripts/lint.sh
+
+################################################################################
+## Testing:: ##
+
+test: ## run all tests
+	python3 -m pytest tests/
+
+test-cov: ## run tests with coverage (requires pytest)
+	python3 -m pytest tests/ --cov=lib --cov-report=html --cov-report=term
 
 ################################################################################
 ## Running:: ##
-run: ## run gyroid
-	./gyroid.py
 
-run-venv: ## run gyroid (in .venv)
-	python3 -m venv .venv && ./gyroid.py
+stl-all: ## (re-)generate all surfaces in STL format
+	for f in $$(ls ./*.py); do $$f -s; done
+
+usage: ## show what surfaces are available
+	@for f in $$(ls ./*.py); do \
+		$$f -h; \
+		echo "------------------------------------------------------------"; \
+	done
+
+################################################################################
+## Examples:: ##
+
+example-gyroid-stl: ## generate STL for gyroid
+	python gyroid.py -s
+
+example-interactive: ## show gyroid in matplotlib interactive mode
+	python gyroid.py -p
+
+################################################################################
+## Maintenance:: ##
+
+clean: ## clean generated files
+	rm -rf __pycache__ .pytest_cache .coverage htmlcov
+	find . -name "*.pyc" -delete
+	find . -name "__pycache__" -type d -exec rm -rf {} +
+
+update-deps: ## update dependencies
+	pip install --upgrade -r requirements.txt
 
 

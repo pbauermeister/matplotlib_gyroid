@@ -1,5 +1,7 @@
 # Gyroid 3D Plot
 
+Note: to clone this repo, you need _git lfs_, because generated STL files, which are big, have been committed.
+
 ## The Gyroid
 
 The Gyroid has become quite famous in the 3D printing community, for being often
@@ -24,7 +26,7 @@ and iterable parametric _ℝ² → ℝ³_ functions in the form _x = f<sub>x</su
   ./gyroid.py -p  # compute surface and view it
   ```
 
-  ![](./fig-gyroid-mpl.png)
+  ![](./docs/images/fig-gyroid-mpl.png)
 
   Visual inspection is not particularly smooth unless you have a very fast
   computer, so you're better off generating a volume and inspecting its STL
@@ -51,18 +53,18 @@ In order to 3D print the surface, we have to give it a volume by adding some thi
   and can view the result using e.g. `meshlab`.
 
   ```
-  meshlab gyroid.stl
+  meshlab outputs/stl/gyroid.stl
   ```
 
-  ![](./fig-gyroid-meshlab.png)
+  ![](./docs/images/fig-gyroid-meshlab.png)
 
 # 3D Printing
 
 You can use Cura or any other slicer.
 
-- Follow [this link](./fig-gyroid-cura.mp4) to see a video of the successive
+- Follow [this link](./docs/videos/fig-gyroid-cura.mp4) to see a video of the successive
   layers.  
-  ![](./fig-gyroid-cura.png)
+  ![](./docs/images/fig-gyroid-cura.png)
 
 # Installation and Usage
 
@@ -91,7 +93,7 @@ You can use Cura or any other slicer.
 . .venv/bin/activate
 ./gyroid.py     # show options
 ./gyroid.py -p  # show surface in matplotlib; rotation/zoom net performant
-./gyroid.py -s  # compute .stl file with thickness
+./gyroid.py -s  # compute .stl file with thickness (saved to outputs/stl/)
 
 ```
 
@@ -100,8 +102,8 @@ You can use Cura or any other slicer.
 The surfaces provided in this repo are:
 | Program | Description | |
 | ---------------- | -------------------------------| - |
-| `./gyroid.py` | The surface described above | ![](./fig-gyroid.png) |
-| `./lamella.py` | A surface accidentally created | ![](./fig-lamella.png) |
-| `./multiple.py` | A collection of surfaces | ![](./fig-schwarz_p.png) |
-| `./organite.py` | An organic section | ![](./fig-organite.png) |
-| `./scherk-singly.py` | A Scherk surface | ![](./fig-scherk-singly.png)
+| `./gyroid.py` | The surface described above | ![](./docs/images/fig-gyroid.png) |
+| `./lamella.py` | A surface accidentally created | ![](./docs/images/fig-lamella.png) |
+| `./multiple.py` | A collection of surfaces | ![](./docs/images/fig-schwarz_p.png) |
+| `./organite.py` | An organic section | ![](./docs/images/fig-organite.png) |
+| `./scherk-singly.py` | A Scherk surface | ![](./docs/images/fig-scherk-singly.png)
